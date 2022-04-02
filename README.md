@@ -1,5 +1,5 @@
 # Spring4Shell RCE Demo
-
+![MindMap](spring4shell_mindmap.svg)
 ## Types of demo
 
 1. spring-mvc (with spring-boot) deployed as a war to Apache Tomcat
@@ -39,10 +39,10 @@ root
 
 The demo also contains two fixes.
 
-One fix is to apply binder [setDisallowedFields() at controller level](https://github.com/maxxedev/spring4shell/blob/main/spring4shell-spring-mvc/src/main/java/com/example/spring4shell/controller/SafeHelloWorldController.java#L22-L29):
+One fix is to apply binder [setDisallowedFields() at controller level](https://github.com/dotnes/spring4shell/blob/main/spring4shell-spring-mvc/src/main/java/com/example/spring4shell/controller/SafeHelloWorldController.java#L22-L29):
 ```
 # Run or restart the sample app.
-$ docker run -p 8080:8080 --rm maxhyper/spring4shell
+$ docker run -p 8080:8080 --rm dotnes/spring4shell
 
 # Try to install the exploit against safe controller. It should fail
 # (Make sure the exploit was not previously installed)
@@ -53,7 +53,7 @@ $ curl --fail -v --output - 'http://localhost:8080/tomcatwar.jsp?pwd=j&cmd=whoam
 curl: (22) The requested URL returned error: 404
 ```
 
-Another fix is to apply [setDisallowedFields() with a controller advice](https://github.com/maxxedev/spring4shell/blob/main/spring4shell-spring-mvc/src/main/java/com/example/spring4shell/controller/BinderControllerAdvice.java#L7-L20), for all controllers:
+Another fix is to apply [setDisallowedFields() with a controller advice](https://github.com/dotnes/spring4shell/blob/main/spring4shell-spring-mvc/src/main/java/com/example/spring4shell/controller/BinderControllerAdvice.java#L7-L20), for all controllers:
 ```
 # Run or restart the sample app.
 $ docker run -p 8080:8080 --rm -e APPLY_ADVICE=true maxhyper/spring4shell
