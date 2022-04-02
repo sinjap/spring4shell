@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,5 +26,29 @@ public class HelloWorldController {
         model.addAttribute("greeting", greeting);
         return greeting;
     }
+
+    @GetMapping({ "/test"})
+    @ResponseBody
+    public Greeting get_test(Model model) {
+        logger.info("model = {}", model);
+        Greeting greeting = new Greeting();
+        greeting.setId(123);
+        greeting.setContent(OffsetDateTime.now().toString() + " " + model);
+        model.addAttribute("greeting", greeting);
+        return greeting;
+    }
+
+    @PostMapping({ "/test"})
+    @ResponseBody
+    public Greeting post_test(Model model) {
+        logger.info("model = {}", model);
+        Greeting greeting = new Greeting();
+        greeting.setId(123);
+        greeting.setContent(OffsetDateTime.now().toString() + " " + model);
+        model.addAttribute("greeting", greeting);
+        return greeting;
+    }
+
+
 
 }
