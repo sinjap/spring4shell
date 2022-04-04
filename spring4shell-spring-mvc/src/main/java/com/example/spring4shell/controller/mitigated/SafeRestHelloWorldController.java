@@ -1,22 +1,25 @@
-package com.example.spring4shell.controller;
+package com.example.spring4shell.controller.mitigated;
 
 import com.example.spring4shell.model.HelloWorld;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
-@Controller
-public class SafeHelloWorldController {
+@RestController
+public class SafeRestHelloWorldController {
 
-    @RequestMapping("/safe-helloworld")
+    @RequestMapping("/rest/safe-request")
     public String handler(HelloWorld model) {
         HelloWorld helloWorld = new HelloWorld();
         helloWorld.setMessage("Hello World Example Using Spring MVC 5!!!");
+        helloWorld.setEndpoint("/safe-request");
+        helloWorld.setIsVulnerable(false);
         helloWorld.setDateTime(LocalDateTime.now().toString());
-        return "helloworld";
+        return "request";
     }
 
     @InitBinder

@@ -1,4 +1,4 @@
-package com.example.spring4shell.controller;
+package com.example.spring4shell.controller.mitigated;
 
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
