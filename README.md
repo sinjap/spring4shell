@@ -1,5 +1,5 @@
 # Spring4Shell RCE Demo for CVE-2022-22965
-![MindMap](spring4shell_mindmap.svg)
+![MindMap](spring4shell_mindmap.drawio.png)
 
 ## Types of demo
 
